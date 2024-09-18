@@ -2,7 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
+//Vishal Mahalingam
+//Student #: 991696319
 package card;
+import java.util.Random;
 
 /**
  * A class that fills a magic hand of 7 cards with random Card Objects
@@ -15,18 +19,35 @@ public class CardTrick {
     public static void main(String[] args)
     {
         Card[] magicHand = new Card[7];
+        Random cards = new Random();
         
         for (int i=0; i<magicHand.length; i++)
         {
             Card c = new Card();
-            //c.setValue(insert call to random number generator here)
-            //c.setSuit(Card.SUITS[insert call to random number between 0-3 here])
+            c.setValue(cards.nextInt(13) + 1);
+            c.setSuit(Card.SUITS[cards.nextInt(4)]);
+            magicHand[i] = c;
+        }
+        System.out.println("Pick a card, any card!");
+        System.out.println("Enter a (card) value between 1-13:");
+        int userCard = scanner.nextInt();
+        System.out.println("Enter a value between 0-3 to determine the suit:");
+        int userSuit = scanner.nextInt();
+        
+        boolean magicCard = false;
+        for (Card c:magicHand){
+            if (c.getValue() == userCard && c.getSuit() == Card.SUITS[userSuit]){
+                magicCard = true;
+            }
         }
         
-        //insert code to ask the user for Card value and suit, create their card
-        // and search magicHand here
-        //Then report the result here
-        // add one luckcard hard code 2,clubs
+        if (magicCard){
+            System.out.println("Your card is in the magic hand!");
+        }
+        
+        else{
+            System.out.println("Sorry! Your card was not in the magic hand!");
+        }
     }
     
 }
