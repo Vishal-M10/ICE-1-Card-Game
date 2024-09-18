@@ -28,6 +28,11 @@ public class CardTrick {
             c.setSuit(Card.SUITS[cards.nextInt(4)]);
             magicHand[i] = c;
         }
+
+        Card luckyCard = new Card();
+        luckyCard.setValue(3);
+        luckyCard.setSUIT(Card.SUITS[3]);
+        
         System.out.println("Pick a card, any card!");
         System.out.println("Enter a (card) value between 1-13:");
         int userCard = scanner.nextInt();
